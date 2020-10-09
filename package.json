@@ -4,8 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"jest-isa@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\"",
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finwo/jest-isa.git"
   },
   "author": "Robin Bron <robin@finwo.nl>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/finwo/jest-isa/issues"
+  },
+  "funding": {
+    "url": "https://github.com/sponsors/finwo"
+  },
+  "homepage": "https://github.com/finwo/jest-isa#readme",
+  "keywords": [
+    "jest",
+    "isa",
+    "instanceof"
+  ]
 }
